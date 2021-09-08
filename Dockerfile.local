@@ -1,0 +1,17 @@
+FROM javimendez/symfony-roadrunner:base
+
+ENV APP_ENV=dev \
+    APP_RUNTIME_ENV=dev \
+    # IMPORTANT use the same version of phpunit
+    SYMFONY_PHPUNIT_VERSION=8.5
+
+# pcov for improve phpunit testing code coverage without using xdebug
+RUN pecl install -o -f xdebug pcov \
+    && rm -rf /tmp/*
+
+# Only for local purposes:
+# It's very important use "-l" parameter, this avoid that not crash the computer when the dockerfile.local is building
+#RUN useradd -l -u $EXPORTED_USER -m -s /bin/bash $EXPORTED_USER
+
+COPY docker/local /docker-utilities
+RUN chmod +x /docker-utilities/entrypoint.sh
