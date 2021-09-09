@@ -12,5 +12,6 @@ services:
     env_file: .env
     environment:
       - APP_EXECUTE_MIGRATIONS=true
+      - XDEBUG_ACTIVATED=true
     volumes:
       - ./app:/var/www/app
