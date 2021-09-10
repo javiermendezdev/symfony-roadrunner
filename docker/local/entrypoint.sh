@@ -2,12 +2,15 @@
 
 #set -x
 
+envsubst < /docker-utilities/phpini/php.ini.template > /usr/local/etc/php/conf.d/php.ini
+
 # Configure .env.local.php (performance) after create .env from Configserver:
 php -d memory_limit=-1 ${COMPOSER_PATH} dump-env ${APP_ENV} --no-cache
 
 
 if [ "$XDEBUG_ACTIVATED" = true ] ; then
     echo "[ENTRYPOINT] Enable xdebug php.ini package"
+    envsubst < /docker-utilities/phpini/xdebug.ini.template > /docker-utilities/phpini/xdebug.ini
     cp /docker-utilities/phpini/xdebug.ini /usr/local/etc/php/conf.d
 fi
 

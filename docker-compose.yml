@@ -13,5 +13,7 @@ services:
     environment:
       - APP_EXECUTE_MIGRATIONS=true
       - XDEBUG_ACTIVATED=true
+      - XDEBUG_CLIENT_PORT=9003
+      - XDEBUG_CLIENT_HOST=javiermendez
     volumes:
       - ./app:/var/www/app

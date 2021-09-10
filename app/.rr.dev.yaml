@@ -4,8 +4,8 @@ server:
   # remove the previous `command` line above and uncomment the line below.
   command: "php public/index.php"
   env:
-    APP_RUNTIME: Baldinof\RoadRunnerBundle\Runtime\Runtime
-    XDEBUG_SESSION: 1
+    - APP_RUNTIME: Baldinof\RoadRunnerBundle\Runtime\Runtime
+    - XDEBUG_SESSION: "1"
 
 http:
   address: 0.0.0.0:8080
